@@ -11,19 +11,23 @@ button.addEventListener("click", () => {
 });
 
 function addtodo(todo) {
-  let para = document.createElement("p");
-  para.innerText = todo;
-  todoList.appendChild(para);
-  // single-click---it will strike the task
-  para.addEventListener("click", () => {
-    para.style.textDecoration = "line-through";
-    remove(todo);
-  });
-  // double-click---delete the task
-  para.addEventListener("dblclick", () => {
-    todoList.removeChild(para);
-    remove(todo);
-  });
+  if (input.value === "") {
+    alert("You must write something!");
+  } else {
+    let para = document.createElement("li");
+    para.innerText = todo;
+    todoList.appendChild(para);
+    // single-click---it will strike the task
+    para.addEventListener("click", () => {
+      para.style.textDecoration = "line-through";
+      remove(todo);
+    });
+    // double-click---delete the task
+    para.addEventListener("dblclick", () => {
+      todoList.removeChild(para);
+      remove(todo);
+    });
+  }
 }
 
 function remove(todo) {
